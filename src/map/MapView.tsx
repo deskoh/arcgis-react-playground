@@ -1,28 +1,50 @@
 import MapView from '@arcgis/core/views/MapView';
 import Map from '@arcgis/core/Map';
+import Basemap from '@arcgis/core/Basemap';
 import config from '@arcgis/core/config';
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
+
+type MapViewProperties = Required<ConstructorParameters<typeof MapView>>[0];
 
 config.apiKey = process.env.REACT_APP_ARCGIS_APIKEY!;
+config.request.trustedServers = ['*'];
 
-export default function MyMapView () {
+interface MapViewProps extends Omit<MapViewProperties, 'map'> {
+  basemap?: Basemap | string,
+  onMapViewLoad?: (view: MapView) => void,
+}
+
+// Important to use same reference for default values
+const defaultCenter = [103.85, 1.3221];
+
+const MyMapView: React.FC<MapViewProps> = ({
+  basemap,
+  onMapViewLoad,
+  center = defaultCenter,
+  zoom = 12,
+  ...rest
+}) => {
   const mapRef = useRef(null) as any;
-  const [, setView] = useState<MapView | null>(null);
 
   useEffect(() => {
-    const map = new Map({
-      basemap: 'arcgis-topographic'
-    });
+    const map = new Map({ basemap });
     const view = new MapView({
-      map: map,
-      center: [-118.805, 34.027],
-      zoom: 13,
-      container: mapRef.current
+      container: mapRef.current,
+      map,
+      center,
+      zoom,
+      ...rest,
     });
 
-    setView(view);
-    return () => view?.destroy();
-  }, []);
+    if (view && onMapViewLoad) onMapViewLoad(view);
+
+    return () => {
+      view?.destroy();
+      map.destroy();
+    }
+  }, [basemap, center, zoom, onMapViewLoad, rest]);
 
   return <div className='mapDiv' ref={mapRef}></div>;
 };
+
+export default MyMapView;
