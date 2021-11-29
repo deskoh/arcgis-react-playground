@@ -17,6 +17,7 @@ function App() {
       <MapView
         basemap={basemap}
         // basemap='arcgis-topographic'
+        className='mapDiv'
         onMapViewLoad={MapViewLoadHandler}
         center={[103.85, 1.3221]}
       />

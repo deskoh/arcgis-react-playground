@@ -8,7 +8,7 @@ import MapServer from './MapServer';
 declare module './ServiceUrls' {
   interface ServiceUrlsClass {
     /**
-     * Street Map TileLayer
+     * Grid
      */
     Grid: string;
   }
@@ -31,7 +31,7 @@ class Grid extends MapServer<Layers> {
       return new MapImageLayer({
         id: 'AB Grid',
         title: 'AB Grid',
-        url: ServiceUrls.ABGrid,
+        url: ServiceUrls.Grid,
         sublayers: [{ id: 1 }, { id: 2 }],
       });
     }

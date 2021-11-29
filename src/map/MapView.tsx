@@ -11,6 +11,7 @@ config.request.trustedServers = ['*'];
 
 interface MapViewProps extends Omit<MapViewProperties, 'map'> {
   basemap?: Basemap | string,
+  className: string,
   onMapViewLoad?: (view: MapView) => void,
 }
 
@@ -19,6 +20,7 @@ const defaultCenter = [103.85, 1.3221];
 
 const MyMapView: React.FC<MapViewProps> = ({
   basemap,
+  className,
   onMapViewLoad,
   center = defaultCenter,
   zoom = 12,
@@ -44,7 +46,7 @@ const MyMapView: React.FC<MapViewProps> = ({
     }
   }, [basemap, center, zoom, onMapViewLoad, rest]);
 
-  return <div className='mapDiv' ref={mapRef}></div>;
+  return <div className={className} ref={mapRef}></div>;
 };
 
 export default MyMapView;
