@@ -20,6 +20,7 @@ const defaultCenter = [103.85, 1.3221];
 
 const MyMapView: React.FC<MapViewProps> = ({
   basemap,
+  children,
   className,
   onMapViewLoad,
   center = defaultCenter,
@@ -46,7 +47,11 @@ const MyMapView: React.FC<MapViewProps> = ({
     }
   }, [basemap, center, zoom, onMapViewLoad, rest]);
 
-  return <div className={className} ref={mapRef}></div>;
+  return (
+    <div className={className} ref={mapRef}>
+      {children}
+    </div>
+  );
 };
 
 export default MyMapView;
