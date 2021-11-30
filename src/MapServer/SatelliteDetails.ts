@@ -1,10 +1,10 @@
 import Layer from '@arcgis/core/layers/Layer';
 import MapImageLayer from '@arcgis/core/layers/MapImageLayer';
 
-import { BaseUrl, ServiceUrls } from './ServiceUrls';
+import { BaseUrl, ServiceUrls, LayerId } from './constants';
 import MapServerBasemap from './MapServerBasemap';
 
-declare module './ServiceUrls' {
+declare module './constants/ServiceUrls' {
   interface ServiceUrlsClass {
     /**
      * Satellite TileLayer for BaseMap
@@ -25,6 +25,12 @@ enum Layers {
   SOS_TELEPHONE = 9,
   FIRE_HYDRANT = 10,
   LAMP_POST = 11,
+}
+
+declare module './constants/LayerId' {
+  interface LayerId {
+    SatalliteDetails: SatelliteDetails;
+  }
 }
 
 class SatelliteDetails extends MapServerBasemap<Layers> {

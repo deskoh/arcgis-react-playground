@@ -1,10 +1,10 @@
 import Layer from '@arcgis/core/layers/Layer';
 import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
 
-import { BaseUrl, ServiceUrls } from './ServiceUrls';
+import { BaseUrl, ServiceUrls, LayerId } from './constants';
 import MapServerBasemap from './MapServerBasemap';
 
-declare module './ServiceUrls' {
+declare module './constants/ServiceUrls' {
   interface ServiceUrlsClass {
     /**
      * OneMap TileLayer
@@ -20,6 +20,14 @@ enum Layers {
   GreyTileLayer = 'Grey',
   NightTileLayer = 'Night',
   OriginalTileLayer = 'Original',
+}
+declare module './constants/LayerId' {
+  interface LayerId {
+    OneMapDefault: OnemapBasemap;
+    OneMapGrey: OnemapBasemap;
+    OneMapNight: OnemapBasemap;
+    OneMapOriginal: OnemapBasemap;
+  }
 }
 
 // const thumbnails: Record<Layers, string> = {
@@ -38,8 +46,9 @@ class OnemapBasemap extends MapServerBasemap<Layers> {
 
   /* eslint-disable class-methods-use-this */
   override createLayer(layer: Layers): Layer {
+    const id = LayerId[`OneMap${layer}`];
     return new WebTileLayer({
-      // id: 'Satellite',
+      id,
       title: layer,
       urlTemplate: `https://{subDomain}.onemap.sg/v3/${layer}/{level}/{col}/{row}.png`,
       subDomains: ['maps-a', 'maps-b', 'maps-c'],

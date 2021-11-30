@@ -2,10 +2,10 @@ import Layer from '@arcgis/core/layers/Layer';
 import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
 import MapImageLayer from '@arcgis/core/layers/MapImageLayer';
 
-import { BaseUrl, ServiceUrls } from './ServiceUrls';
+import { BaseUrl, ServiceUrls, LayerId } from './constants';
 import MapServer from './MapServer';
 
-declare module './ServiceUrls' {
+declare module './constants/ServiceUrls' {
   interface ServiceUrlsClass {
     /**
      * Grid
@@ -20,6 +20,14 @@ enum Layers {
   ABGrid,
   Grid1km,
   Grid100m,
+}
+
+declare module './constants/LayerId' {
+  interface LayerId {
+    ABGrid: Grid;
+    Grid1km: Grid;
+    Grid100m: Grid;
+  }
 }
 
 class Grid extends MapServer<Layers> {

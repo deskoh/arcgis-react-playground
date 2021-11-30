@@ -2,10 +2,10 @@ import Layer from '@arcgis/core/layers/Layer';
 import TileLayer from '@arcgis/core/layers/TileLayer';
 
 // import SgTileMapBasicPng from 'assets/map/base-layer/sg-tile-map-basic.PNG';
-import { BaseUrl, ServiceUrls } from './ServiceUrls';
+import { BaseUrl, ServiceUrls, LayerId } from './constants';
 import MapServerBasemap from './MapServerBasemap';
 
-declare module './ServiceUrls' {
+declare module './constants/ServiceUrls' {
   interface ServiceUrlsClass {
     /**
      * Street Map TileLayer
@@ -17,7 +17,16 @@ declare module './ServiceUrls' {
 ServiceUrls.Base = `${BaseUrl}/Base/MapServer`;
 
 enum Layers {
-  StreetTileLayer,
+  /**
+   * Streetmap TileLayer
+   */
+  TileLayer,
+}
+
+declare module './constants/LayerId' {
+  interface LayerId {
+    StreetMapTileLayer: StreetBasemap;
+  }
 }
 
 class StreetBasemap extends MapServerBasemap<Layers> {
@@ -29,9 +38,9 @@ class StreetBasemap extends MapServerBasemap<Layers> {
 
   // eslint-disable-next-line class-methods-use-this
   override createLayer(layer: Layers): Layer {
-    if (layer === Layers.StreetTileLayer) {
+    if (layer === Layers.TileLayer) {
       return new TileLayer({
-        id: 'Street',
+        id: LayerId.StreetMapTileLayer,
         title: 'Street',
         url: ServiceUrls.Base,
       });

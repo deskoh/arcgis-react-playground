@@ -2,11 +2,10 @@ import Layer from '@arcgis/core/layers/Layer';
 import TileLayer from '@arcgis/core/layers/TileLayer';
 import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
 
-// import SatellitePng from 'assets/map/base-layer/satellite.PNG';
-import { BaseUrl, ServiceUrls } from './ServiceUrls';
+import { BaseUrl, ServiceUrls, LayerId } from './constants';
 import MapServerBasemap from './MapServerBasemap';
 
-declare module './ServiceUrls' {
+declare module './constants/ServiceUrls' {
   interface ServiceUrlsClass {
     /**
      * Satellite TileLayer
@@ -21,11 +20,18 @@ enum Layers {
   /**
    * Satellite TileLayer
    */
-  SatelliteTileLayer,
+  TileLayer,
   /**
    * Webtile layer for offline mode
    */
   WebTile,
+}
+
+declare module './constants/LayerId' {
+  interface LayerId {
+    SatalliteTileLayer: SatelliteBasemap;
+    SatalliteWebTileLayer: SatelliteBasemap;
+  }
 }
 
 class SatelliteBasemap extends MapServerBasemap<Layers> {
@@ -38,15 +44,15 @@ class SatelliteBasemap extends MapServerBasemap<Layers> {
   /* eslint-disable class-methods-use-this */
   override createLayer(layer: Layers): Layer {
     switch (layer) {
-      case Layers.SatelliteTileLayer:
+      case Layers.TileLayer:
         return new TileLayer({
-          id: 'Satellite',
+          id: LayerId.SatalliteTileLayer,
           title: 'Satellite',
           url: ServiceUrls.Satellite,
         });
       case Layers.WebTile:
         return new WebTileLayer({
-          id: 'Satellite',
+          id: LayerId.SatalliteWebTileLayer,
           // E.g. "http://localhost:8000/styles/dark-matter/{level}/{col}/{row}.png",
           urlTemplate: `/GoogleMap_Aerial/{level}/{row}/{level}_y{row}_x{col}.jpg`,
         });
