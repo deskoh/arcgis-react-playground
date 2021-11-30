@@ -13,7 +13,11 @@ abstract class MapServerBasemap<L> extends MapServer<L> {
    * @param title The title of the Basemap
    * @param thumnailUrl Thumbnail URL or data URI
    */
-  constructor(private id?: string, private title = id, private thumnailUrl?: string) {
+  constructor(
+    public readonly id?: string,
+    public readonly title = id,
+    private readonly thumnailUrl?: string
+  ) {
     super();
   }
 
