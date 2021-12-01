@@ -2,7 +2,7 @@ import './App.css';
 import MapView from './map/MapView';
 import MapViewLoadHandler from './map/MapViewLoadHandler';
 import { ServiceUrls } from './MapServer';
-import OneMap from './MapServer/OnemapBasemap';
+import OneMap from './MapServer/Onemap';
 
 console.log(ServiceUrls.OneMap);
 

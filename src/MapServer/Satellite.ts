@@ -3,7 +3,7 @@ import TileLayer from '@arcgis/core/layers/TileLayer';
 import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
 
 import { BaseUrl, ServiceUrls, LayerId } from './constants';
-import MapServerBasemap from './MapServerBasemap';
+import MapServer from './MapServer';
 
 declare module './constants/ServiceUrls' {
   interface ServiceUrlsClass {
@@ -20,7 +20,7 @@ enum Layers {
   /**
    * Satellite TileLayer
    */
-  TileLayer,
+  SatelliteTile,
   /**
    * Webtile layer for offline mode
    */
@@ -34,17 +34,13 @@ declare module './constants/LayerId' {
   }
 }
 
-class SatelliteBasemap extends MapServerBasemap<Layers> {
+class SatelliteBasemap extends MapServer<Layers> {
   readonly Layers = Layers;
-
-  constructor(id: string, title = id) {
-    super(id, title, 'SatellitePng');
-  }
 
   /* eslint-disable class-methods-use-this */
   override createLayer(layer: Layers): Layer {
     switch (layer) {
-      case Layers.TileLayer:
+      case Layers.SatelliteTile:
         return new TileLayer({
           id: LayerId.SatalliteTileLayer,
           title: 'Satellite',
@@ -60,4 +56,4 @@ class SatelliteBasemap extends MapServerBasemap<Layers> {
   }
 }
 
-export default new SatelliteBasemap('Satellite', 'Satellite');
+export default new SatelliteBasemap();

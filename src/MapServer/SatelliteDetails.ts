@@ -2,7 +2,7 @@ import Layer from '@arcgis/core/layers/Layer';
 import MapImageLayer from '@arcgis/core/layers/MapImageLayer';
 
 import { BaseUrl, ServiceUrls, LayerId } from './constants';
-import MapServerBasemap from './MapServerBasemap';
+import MapServer from './MapServer';
 
 declare module './constants/ServiceUrls' {
   interface ServiceUrlsClass {
@@ -19,7 +19,7 @@ enum Layers {
   /**
    * MapImageLayer with features such as Banks, Mailbox etc.
    */
-  DetailsMapImageLayer,
+  DetailsMapImage,
   BANK = 3,
   MAILBOX = 4,
   SOS_TELEPHONE = 9,
@@ -33,17 +33,13 @@ declare module './constants/LayerId' {
   }
 }
 
-class SatelliteDetails extends MapServerBasemap<Layers> {
+class SatelliteDetails extends MapServer<Layers> {
   readonly Layers = Layers;
 
-  constructor(id: string, title = id) {
-    super(id, title);
-  }
-
   override createLayer(layer: Layers): Layer {
-    if (layer === Layers.DetailsMapImageLayer) {
+    if (layer === Layers.DetailsMapImage) {
       return new MapImageLayer({
-        id: 'Satellite Details',
+        id: LayerId.SatalliteDetails,
         title: 'Satellite Details',
         url: ServiceUrls.SatelliteDetails,
         sublayers: [
@@ -60,4 +56,4 @@ class SatelliteDetails extends MapServerBasemap<Layers> {
   }
 }
 
-export default new SatelliteDetails('Satellite-Details');
+export default new SatelliteDetails();

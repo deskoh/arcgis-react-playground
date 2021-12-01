@@ -3,7 +3,7 @@ import TileLayer from '@arcgis/core/layers/TileLayer';
 
 // import SgTileMapBasicPng from 'assets/map/base-layer/sg-tile-map-basic.PNG';
 import { BaseUrl, ServiceUrls, LayerId } from './constants';
-import MapServerBasemap from './MapServerBasemap';
+import MapServer from './MapServer';
 
 declare module './constants/ServiceUrls' {
   interface ServiceUrlsClass {
@@ -20,7 +20,7 @@ enum Layers {
   /**
    * Streetmap TileLayer
    */
-  TileLayer,
+  StreetTile,
 }
 
 declare module './constants/LayerId' {
@@ -29,16 +29,12 @@ declare module './constants/LayerId' {
   }
 }
 
-class StreetBasemap extends MapServerBasemap<Layers> {
+class StreetBasemap extends MapServer<Layers> {
   readonly Layers = Layers;
-
-  constructor(id: string, title = id) {
-    super(id, title, 'SgTileMapBasicPng');
-  }
 
   // eslint-disable-next-line class-methods-use-this
   override createLayer(layer: Layers): Layer {
-    if (layer === Layers.TileLayer) {
+    if (layer === Layers.StreetTile) {
       return new TileLayer({
         id: LayerId.StreetMapTileLayer,
         title: 'Street',
@@ -49,4 +45,4 @@ class StreetBasemap extends MapServerBasemap<Layers> {
   }
 }
 
-export default new StreetBasemap('StreetMap', 'StreetMap');
+export default new StreetBasemap();

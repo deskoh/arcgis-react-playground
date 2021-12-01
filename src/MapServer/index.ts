@@ -1,11 +1,11 @@
-import SatelliteBasemap from './SatelliteBasemap';
+import Satellite from './Satellite';
 import SatelliteDetails from './SatelliteDetails';
-import StreetBasemap from './StreetBasemap';
+import Street from './Street';
 
 export * from './constants/ServiceUrls';
 
 export {
-  SatelliteBasemap,
+  Satellite,
   SatelliteDetails,
-  StreetBasemap,
+  Street,
 };
