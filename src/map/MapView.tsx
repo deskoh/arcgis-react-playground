@@ -11,6 +11,7 @@ config.request.trustedServers = ['*'];
 
 interface MapViewProps extends Omit<MapViewProperties, 'map'> {
   basemap?: Basemap | string,
+  children?: React.ReactNode,
   className: string,
   onMapViewLoad?: (view: MapView) => void,
 }
@@ -42,8 +43,8 @@ const MyMapView: React.FC<MapViewProps> = ({
     if (view && onMapViewLoad) onMapViewLoad(view);
 
     return () => {
-      view?.destroy();
-      map.destroy();
+      // view?.destroy();
+      // map.destroy();
     }
   }, [basemap, center, zoom, onMapViewLoad, rest]);
 
