@@ -6,7 +6,7 @@ import React, { useEffect, useRef } from 'react';
 
 type MapViewProperties = Required<ConstructorParameters<typeof MapView>>[0];
 
-config.apiKey = process.env.REACT_APP_ARCGIS_APIKEY!;
+config.apiKey = import.meta.env.REACT_APP_ARCGIS_APIKEY;
 config.request.trustedServers = ['*'];
 
 interface MapViewProps extends Omit<MapViewProperties, 'map'> {
