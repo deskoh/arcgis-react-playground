@@ -2,7 +2,7 @@ import Layer from '@arcgis/core/layers/Layer';
 import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
 import MapImageLayer from '@arcgis/core/layers/MapImageLayer';
 
-import { BaseUrl, ServiceUrls, LayerId } from './constants';
+import { BaseUrl, ServiceUrls } from './constants';
 import MapServer from './MapServer';
 
 declare module './constants/ServiceUrls' {
@@ -33,7 +33,6 @@ declare module './constants/LayerId' {
 class Grid extends MapServer<Layers> {
   readonly Layers = Layers;
 
-  // eslint-disable-next-line class-methods-use-this
   override createLayer(layer: Layers): Layer {
     if (layer === Layers.ABGrid) {
       return new MapImageLayer({

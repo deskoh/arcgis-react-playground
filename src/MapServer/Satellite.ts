@@ -37,7 +37,6 @@ declare module './constants/LayerId' {
 class SatelliteBasemap extends MapServer<Layers> {
   readonly Layers = Layers;
 
-  /* eslint-disable class-methods-use-this */
   override createLayer(layer: Layers): Layer {
     switch (layer) {
       case Layers.SatelliteTile:

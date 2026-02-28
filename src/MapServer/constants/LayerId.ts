@@ -5,8 +5,9 @@
 /**
  * Interface used for declaration merging to consolidate the Layer IDs.
  */
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface LayerId {
-  // LayerId: T; where T is a unqiue type such that duplicated LayerIds will be caught at compile time.
+  // LayerId: T; // where T is a unqiue type such that duplicated LayerIds will be caught at compile time.
 };
 
 type LayerIdString = Record<keyof LayerId, string>;

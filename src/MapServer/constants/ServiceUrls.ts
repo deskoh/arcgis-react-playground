@@ -1,4 +1,4 @@
-let BASE_URL = 'http://....';
+const BASE_URL = 'http://....';
 
 /**
  * Absolute URL of REST endpoints of ArcGIS layers or services

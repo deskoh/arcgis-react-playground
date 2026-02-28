@@ -32,7 +32,6 @@ declare module './constants/LayerId' {
 class StreetBasemap extends MapServer<Layers> {
   readonly Layers = Layers;
 
-  // eslint-disable-next-line class-methods-use-this
   override createLayer(layer: Layers): Layer {
     if (layer === Layers.StreetTile) {
       return new TileLayer({

@@ -4,16 +4,19 @@
   "private": true,
   "dependencies": {
     "@arcgis/core": "^5.0.3",
+    "@arcgis/map-components": "^5.0.6",
+    "@esri/calcite-components": "^5.0.2",
     "@types/node": "^24.10.13",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "typescript": "^5.9.3"
+    "react-dom": "^19.2.4"
   },
   "scripts": {
     "start": "rsbuild dev",
     "build": "rsbuild build",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
     "preview": "rsbuild preview",
     "copy": "ncp ./node_modules/@arcgis/core/assets ./public/assets"
   },
@@ -31,6 +34,9 @@
   },
   "devDependencies": {
     "@rsbuild/core": "^1.7.3",
-    "@rsbuild/plugin-react": "^1.4.5"
+    "@rsbuild/plugin-react": "^1.4.5",
+    "oxlint": "^1.57.0",
+    "oxlint-tsgolint": "^0.17.4",
+    "typescript": "^6.0.2"
   }
 }
