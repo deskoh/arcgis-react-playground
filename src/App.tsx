@@ -1,5 +1,6 @@
+import { useEffect } from 'react';
 import './App.css';
-import MapView from './map/MapView';
+import MapView, { useMap } from './map/MapView';
 import MapViewReadyHandler from './map/MapViewReadyHandler';
 import { ServiceUrls } from './MapServer';
 import OneMap from './MapServer/Onemap';
@@ -17,6 +18,15 @@ const basemap = OneMap.createBasemap([
 });
 
 function App() {
+
+  const map = useMap();
+
+  useEffect(() => {
+    if (map) {
+      console.log("Map view is ready");
+    }
+  }, [map]);
+  
   return (
     <div className="App">
       <MapView

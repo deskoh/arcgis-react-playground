@@ -1,7 +1,7 @@
 import '@arcgis/map-components/types/react';
 
 import config from '@arcgis/core/config';
-import React, { useEffect } from 'react';
+import React, { useEffect, useSyncExternalStore } from 'react';
 
 // Import components
 import "@arcgis/map-components/components/arcgis-map";
@@ -21,6 +21,35 @@ type MapViewProps = Partial<ReactArcgisMap>
 // Important to use same reference for default values
 const defaultCenter = [103.85, 1.3221];
 
+const listeners = new Set<() => void>();
+
+export const MapUtil = {
+  map: null as HTMLArcgisMapElement | null,
+
+  setMap(newMap: HTMLArcgisMapElement) {
+    this.map = newMap;
+    // Notify all React components that the store changed
+    listeners.forEach((listener) => listener());
+  },
+
+  // The subscription function React will use
+  subscribe(callback: () => void) {
+    listeners.add(callback);
+    // Return an unsubscribe function
+    return () => listeners.delete(callback);
+  },
+
+  // The function to get the current value
+  getSnapshot() {
+    return MapUtil.map;
+  }
+};
+
+export const useMap = () => useSyncExternalStore(
+  MapUtil.subscribe, 
+  MapUtil.getSnapshot
+);
+
 const MyMapView: React.FC<MapViewProps> = ({
   basemap,
   children,
@@ -33,7 +62,7 @@ const MyMapView: React.FC<MapViewProps> = ({
   useEffect(() => {
     const viewElement = document.querySelector("arcgis-map") as HTMLArcgisMapElement;
     void viewElement.viewOnReady().then(() => {
-      console.log("Map view is ready");
+      MapUtil.setMap(viewElement);
     });
   }, []);
 
