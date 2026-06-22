@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@arcgis/core": "^5.0.3",
-    "@arcgis/map-components": "^5.0.6",
-    "@esri/calcite-components": "^5.0.2",
-    "@types/node": "^24.10.13",
-    "@types/react": "^19.2.14",
+    "@arcgis/core": "^5.1.0",
+    "@arcgis/map-components": "^5.1.0",
+    "@esri/calcite-components": "^5.1.1",
+    "@types/node": "^26.0.0",
+    "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
   "scripts": {
     "start": "rsbuild dev",
@@ -34,8 +34,8 @@
     ]
   },
   "devDependencies": {
-    "@rsbuild/core": "^1.7.3",
-    "@rsbuild/plugin-react": "^1.4.5",
+    "@rsbuild/core": "^2.0.15",
+    "@rsbuild/plugin-react": "^2.1.0",
     "@swc/core": "^1.15.41",
     "@swc/jest": "^0.2.39",
     "@testing-library/jest-dom": "^6.9.1",
@@ -43,8 +43,8 @@
     "@types/jest": "^30.0.0",
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
-    "oxlint": "^1.57.0",
-    "oxlint-tsgolint": "^0.17.4",
-    "typescript": "^6.0.2"
+    "oxlint": "^1.70.0",
+    "oxlint-tsgolint": "^0.23.0",
+    "typescript": "^6.0.3"
   }
 }
