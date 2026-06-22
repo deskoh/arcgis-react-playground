@@ -18,7 +18,8 @@
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "preview": "rsbuild preview",
-    "copy": "ncp ./node_modules/@arcgis/core/assets ./public/assets"
+    "copy": "ncp ./node_modules/@arcgis/core/assets ./public/assets",
+    "test": "jest"
   },
   "browserslist": {
     "production": [
@@ -35,6 +36,13 @@
   "devDependencies": {
     "@rsbuild/core": "^1.7.3",
     "@rsbuild/plugin-react": "^1.4.5",
+    "@swc/core": "^1.15.41",
+    "@swc/jest": "^0.2.39",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/jest": "^30.0.0",
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1",
     "oxlint": "^1.57.0",
     "oxlint-tsgolint": "^0.17.4",
     "typescript": "^6.0.2"
