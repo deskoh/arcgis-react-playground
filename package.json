@@ -2,6 +2,7 @@
   "name": "arcgis-playground",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@11.1.2",
   "dependencies": {
     "@arcgis/core": "^5.1.0",
     "@arcgis/map-components": "^5.1.0",
