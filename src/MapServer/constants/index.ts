@@ -1,7 +1,7 @@
-import LayerId from './LayerId';
+import LayerIdValue from './LayerId';
 
 export * from './ServiceUrls';
 
 export {
-  LayerId,
+  LayerIdValue as LayerId,
 }

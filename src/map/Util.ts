@@ -12,7 +12,7 @@ export const useMapWatchValue = <T>(getValue: () => T, initialValue: T, options?
     return () => {
       handle.remove();
     };
-  }, [getValue, options]);
+  }, [callback, getValue, options]);
   
   return value;
 }

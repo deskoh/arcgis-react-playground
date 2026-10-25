@@ -9,7 +9,7 @@ import "@arcgis/map-components/components/arcgis-home";
 import "@arcgis/map-components/components/arcgis-zoom";
 import "@arcgis/map-components/components/arcgis-basemap-gallery";
 import "@arcgis/map-components/components/arcgis-basemap-layer-list";
-import { ReactArcgisMap } from '@arcgis/map-components/types/react';
+import type { ReactArcgisMap } from '@arcgis/map-components/types/react';
 import LocalBasemapsSource from '@arcgis/core/widgets/BasemapGallery/support/LocalBasemapsSource';
 import Basemap from '@arcgis/core/Basemap';
 
