@@ -33,7 +33,7 @@ function App() {
         basemap={basemap}
         // basemap='arcgis-topographic'
         onarcgisViewReadyChange={MapViewReadyHandler}
-        center={[103.85, 1.3221] as any}
+        center={[103.85, 1.3221]}
       />
     </div>
   );

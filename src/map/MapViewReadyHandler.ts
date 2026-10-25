@@ -1,6 +1,6 @@
 import Basemap from '@arcgis/core/Basemap';
 import { TargetedEvent } from '@arcgis/map-components';
-import { watch } from "@arcgis/core/core/reactiveUtils";
+import { ReactiveWatchOptions, watch } from "@arcgis/core/core/reactiveUtils";
 import { useCallback, useEffect, useState } from 'react';
 
 
@@ -12,7 +12,7 @@ const handleViewReady = (e: TargetedEvent<HTMLArcgisMapElement, void>): void => 
   });
 }
 
-export const useMapWatchValue = <T>(getValue: () => T, initialValue: T, options?: any) => {
+export const useMapWatchValue = <T>(getValue: () => T, initialValue: T, options?: ReactiveWatchOptions<T>) => {
   const [value, setValue] = useState<T>(initialValue);
 
   const callback = useCallback((newValue: T) => setValue(newValue), []);

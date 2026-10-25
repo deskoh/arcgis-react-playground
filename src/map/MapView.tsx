@@ -33,14 +33,14 @@ export const MapUtil = {
   },
 
   // The subscription function React will use
-  subscribe(callback: () => void) {
+  subscribe(this: void, callback: () => void) {
     listeners.add(callback);
     // Return an unsubscribe function
     return () => listeners.delete(callback);
   },
 
   // The function to get the current value
-  getSnapshot() {
+  getSnapshot(this: void) {
     return MapUtil.map;
   }
 };
