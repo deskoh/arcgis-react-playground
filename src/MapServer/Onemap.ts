@@ -41,7 +41,7 @@ class OnemapBasemap extends MapServer<OneMapLayer> {
       title: layer,
       urlTemplate: `https://{subDomain}.onemap.gov.sg/maps/tiles/${layer}/{level}/{col}/{row}.png`,
       subDomains: ['www'],
-      visible: false,
+      visible: layer === OneMapLayer.DefaultTileLayer,
       copyright: `<img src="https://www.onemap.gov.sg/docs/maps/images/oneMap64-01.png" style="height:20px;width:20px;"/> OneMap | Map data &copy; contributors, <a href="https://www.sla.gov.sg/">Singapore Land Authority</a>`,
       ...properties,
     });
