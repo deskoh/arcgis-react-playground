@@ -6,8 +6,8 @@
 pnpm start          # dev server (rsbuild, localhost:3000)
 pnpm build          # production build to dist/
 pnpm preview        # preview production build
-pnpm lint           # oxlint
-pnpm lint:fix       # oxlint --fix
+pnpm lint           # rslint
+pnpm lint:fix       # rslint --fix
 pnpm test           # jest (all tests)
 pnpm test -- --testPathPattern=Util  # run a single test file
 pnpm copy           # copy @arcgis/core assets to public/assets (run once after install)
@@ -15,7 +15,7 @@ pnpm copy           # copy @arcgis/core assets to public/assets (run once after 
 
 ## Architecture
 
-The app is a React 19 + ArcGIS Maps SDK playground focused on Singapore basemaps. It uses **rsbuild** (Rspack-based) as the bundler and **oxlint** for linting with strict TypeScript rules.
+The app is a React 19 + ArcGIS Maps SDK playground focused on Singapore basemaps. It uses **rsbuild** (Rspack-based) as the bundler and **rslint** (type-checked recommended rules, see `rslint.config.ts`) for linting. The React Compiler is enabled (`reactCompiler: true`) and `@rsbuild/plugin-type-check` runs type checks during builds (TypeScript 7).
 
 ### ArcGIS Web Components (map/)
 

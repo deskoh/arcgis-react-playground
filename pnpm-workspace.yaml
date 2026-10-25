@@ -1,4 +1,5 @@
 allowBuilds:
+  '@parcel/watcher': true
   '@swc/core': true
   '@vaadin/vaadin-usage-statistics': false
   unrs-resolver: true
